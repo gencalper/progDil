@@ -76,17 +76,17 @@ class RandomName
                 [
                     "isimler": isimler,
                     "sifatlar": sifatlar
-            ],
+                ],
             "ing":
                 [
                     "isimler": names,
                     "sifatlar": adjectives
-            ]
+                ]
         ]
         let lowerDictionary: [String: [String]]! = dictionary[self.language]
         let isim: [String]! = lowerDictionary["isimler"]
         let sifat: [String]! = lowerDictionary["sifatlar"]
-        return sifat[Random(sifat.count)]+" "+isim[Random(isim.count)]
+        return sifat[Random( sifat.count )]+" "+isim[Random( isim.count )]
     }
     
     func Control( kelime: String ) -> Bool
@@ -116,10 +116,13 @@ class RandomName
         }
     }
     
-    func Random( x:Int ) -> Int
+    func Random( x: Int ) -> Int
     {
-        return Int( arc4random_uniform(UInt32(x)) )
+        return Int( arc4random_uniform(UInt32( x )))
     }
 }
-var nesne = RandomName()
+var dil = Process.arguments[1]
+var c = Process.arguments[2]
+var tekrar: Int! = c.toInt()
+let nesne = RandomName( language: dil, again: tekrar )
 nesne.Show()
